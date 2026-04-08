@@ -2,6 +2,7 @@ services:
   - type: web
     name: satto-ai
     runtime: ruby
+    plan: free # Webサーバーを無料に固定
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec rails server"
     envVars:
@@ -16,5 +17,6 @@ services:
 
 databases:
   - name: satto-ai-db
+    plan: free # データベースを無料に固定
     databaseName: satto_ai_production
     user: satto_ai_user

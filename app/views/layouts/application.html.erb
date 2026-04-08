@@ -2,24 +2,24 @@
 <html>
   <head>
     <title><%= content_for(:title) || "AI師匠" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%# viewport-fit=cover は iPhone のノッチ対策（PWAで重要） %>
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
 
-    <%# PWA関連の設定（後ほどVitePWAが生成する manifest を読み込むため一旦維持） %>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
+    <%# Rails 7.2 標準のヘルパー。これで /manifest.json が配信されます %>
+    <%= tag.link rel: "manifest", href: pwa_manifest_path %>
+    <%= tag.script src: pwa_service_worker_path %>
     
-    <%# --- ここからが Vite 用の修正点 --- %>
-    
-    <%# 1. Vite のエントリポイント(TypeScript)を読み込む %>
+    <%# --- Vite エントリポイント --- %>
     <%= vite_client_tag %>
     <%= vite_typescript_tag 'application' %>
-    
-    <%# ---------------------------------- %>
   </head>
 
   <body class="bg-gray-50">

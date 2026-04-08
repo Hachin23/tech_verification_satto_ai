@@ -24,3 +24,12 @@
 //     })
 //   )
 // })
+
+// ページが更新されたらすぐに新しいService Workerを有効化する
+self.addEventListener("install", (event) => {
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", (event) => {
+  console.log("Satto AI Service Worker activated.");
+});

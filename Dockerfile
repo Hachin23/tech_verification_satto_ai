@@ -27,8 +27,14 @@ RUN apt-get update -qq && apt-get install -y \
 # アプリケーション設定
 RUN mkdir /app
 WORKDIR /app
-RUN gem install bundler
 
-# アプリケーションファイル
+# 1. 先に Gemfile 関連だけコピーして bundle install
+COPY Gemfile Gemfile.lock /app/
+RUN bundle install
+
+# 2. 先に package.json 関連だけコピーして yarn install
+COPY package.json yarn.lock /app/
+RUN yarn install --frozen-lockfile
+
+# 3. 最後に残りの全ファイルをコピー
 COPY . /app
-

@@ -13,7 +13,7 @@ services:
       - key: RAILS_MASTER_KEY
         sync: false
       - key: NODE_VERSION
-        value: 22.12.0 # 使用しているNodeのバージョンに合わせる
+        value: 22.22.1 # 使用しているNodeのバージョンに合わせる
 
 databases:
   - name: satto-ai-db

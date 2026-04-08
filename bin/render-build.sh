@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Bundler（本番最適化）
-bundle config set without 'development test'
-bundle install --jobs 4 --retry 3
-
-# Yarn
-yarn install --frozen-lockfile
+# Bundler
+bundle install
+# Yarn --productionを付けて、開発用の余計なライブラリを入れない
+yarn install --production
 # Vite build
-NODE_ENV=production bundle exec vite build
+bundle exec vite build --mode production
 # Rails assets
-RAILS_ENV=production NODE_ENV=production SKIP_CSS_BUILD=true bundle exec rails assets:precompile
+RAILS_ENV=production SKIP_CSS_BUILD=true bundle exec rails assets:precompile
 # DB
-bundle exec rails db:prepare
+bundle exec rails db:migrate

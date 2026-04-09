@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
 
   def create
     image_data = params[:image]
-
+    
     if image_data.present?
       # 1. Base64デコード（バイナリ化）
       content_type = image_data[%r{(image/[a-z]{3,4})}]

@@ -71,8 +71,4 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   config.active_storage.service = :local
-  # Active StorageでURLを生成するためのホスト設定
-  # config.action_controller.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
-  Rails.application.routes.default_url_options[:host] = "localhost:3000"
 end

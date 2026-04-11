@@ -35,5 +35,9 @@ module App
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Active StorageでURLを生成するためのホスト設定
+    config.action_controller.default_url_options = { host: ENV.fetch("APPLICATION_HOST", "localhost:3000") }
+    config.action_mailer.default_url_options = { host: ENV.fetch("APPLICATION_HOST", "localhost:3000") }
   end
 end

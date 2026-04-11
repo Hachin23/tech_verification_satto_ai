@@ -95,5 +95,6 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
   config.hosts << "satto-ai.onrender.com"
+  config.active_storage.service = :cloudinary
   
 end

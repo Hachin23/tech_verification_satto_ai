@@ -24,7 +24,7 @@ class PhotosController < ApplicationController
         render json: { 
           status: 'success', 
           id: @photo.id,
-          url: Rails.application.routes.url_helpers.url_for(@photo.image) 
+          url: Rails.application.routes.url_helpers.url_for(@photo.image, only_path: true) 
         }, status: :created
       else
         render json: { status: 'error', message: @photo.errors.full_messages }, status: :unprocessable_entity

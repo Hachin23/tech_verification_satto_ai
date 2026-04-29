@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler", // ここを 'bundler' または 'node' に
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "strict": true,
+    "skipLibCheck": true, // これを true にすると外部ライブラリの型チェックをスキップして高速化
+    "paths": {
+      "@/*": ["./src/*"] // エイリアスの設定
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.vue", "entrypoints/**/*.ts","shims-vue.d.ts"]
+}

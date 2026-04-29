@@ -1,8 +1,11 @@
 import { createApp } from 'vue'
-import App from '../App.vue'
+import App from '../src/App.vue'
+import router from '@/router'
 import '../assets/main.css'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use(router)
+app.mount('#app')
 
 // Service Workerの登録処理
 if ('serviceWorker' in navigator) {

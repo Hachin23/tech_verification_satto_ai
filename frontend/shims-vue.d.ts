@@ -5,5 +5,13 @@ declare module '*.vue' {
   export default component
 }
 
-// CSSファイル用（これがないと main.css でエラーになります）
-declare module "*.css";
+// CSSファイルをモジュールとして認識させるための宣言
+declare module "*.css" {
+  const content: any;
+  export default content;
+}
+
+declare module "*.scss";
+declare module "*.png";
+declare module "*.jpg";
+declare module "*.svg";
